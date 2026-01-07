@@ -1,239 +1,550 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8">
-      <title>LETS ALT - MU Tickets</title>
-      <style>
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          background: #f9fafb;
-          margin: 0; 
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          min-height: 100vh;
-          color: #333;
-        }
-    
-        h1 {
-          margin-bottom: 40px;
-          font-weight: 700;
-          font-size: 2.5rem;
-          color: #222;
-        }
-    
-        .project {
-          background: #CCB87A;
-          border-radius: 12px;
-          padding: 24px 24px;
-          margin-bottom: 30px;
-          width: 90%;
-          max-width: 900px;
-          box-shadow: 3px 8px 20px rgba(0,0,0,0.5);
-        }
-    
-        .project h2 {
-          margin-top: 0;
-          margin-bottom: 24px;
-          font-weight: 600;
-          font-size: 1.8rem;
-          color: #0078d7;
-          padding-bottom: 6px;
-          text-align: center;
-          text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
-        }
-    
-        details {
-          background: #f1f5f9;
-          border: solid 1px #555555;
-          border-radius: 8px;
-          margin-bottom: 14px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-    
-        summary {
-          като: pointer;
-          font-weight: 600;
-          color: #004080;
-          user-select: none;
-          list-style: none;
-          padding: 12px 20px;
-        }
-    
-        details[open] summary {
-          background: #dbeafe;
-          color: #003366;
-          border-radius: 8px;
-        }
-    
-        pre {
-          font-family: 'Arial', 'Courier New', monospace;
-        }
-    
-        pre.block {
-          background: #fff;
-          margin: 0;
-          padding: 16px 20px;
-          font-size: 0.9rem;
-          overflow-x: auto;
-          border-top: 1px solid #ccc;
-          border-radius: 0 0 8px 8px;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        }
-    
-        .green { color: limegreen;  font-size: 2rem; }
-        .blue  { color: blue;       font-size: 2rem; }
-        .red   { color: red;        font-size: 2rem; }
-    
-        @keyframes flash {
-          0%, 100% { opacity: 1; }
-          50%      { opacity: 0; }
-        }
-        .flash { animation: flash 1s infinite; }
-    
-        img {
-          width: 100%;
-          margin-top: 12px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-    
-        /* COLLAPSIBLE PROJECTS */
-        .project-container {
-          margin-bottom: 30px;
-          width: 90%;
-          max-width: 900px;
-        }
-    
-        .project-header {
-          background-color: #fff;
-          border-radius: 12px;
-          padding: 16px 24px;
-          cursor: pointer;
-          user-select: none;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          box-shadow: 3px 8px 20px rgba(0,0,0,0.5);
-        }
-    
-        .toggle-icon {
-          font-size: 1.5rem;
-          transition: transform 0.2s ease;
-        }
-    
-        .project-content {
-          border: 1px solid transparent;
-          border-top: none;
-          border-radius: 12px;
-          padding: 20px;
-          display: none;
-        }
-    
-        .project-container.open .project-content {
-          display: block;
-        }
-    
-        .project-container.open .toggle-icon {
-          transform: rotate(90deg);
-        }
-    
-        .toggle-all {
-          margin: 20px 0;
-          padding: 10px 20px;
-          font-size: 1rem;
-          background: #0078d7;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-    
-        .toggle-all:hover {
-          background: #005a9e;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>LETS ALT</h1
-      <small>Updated 2025-12-30 13:20</small>
-      <p style="text-align:center"><strong>Legend:</strong> 
-        <span class="green">✔</span> Cleared &nbsp; 
-        <span class="blue">⧖</span> Awaiting &nbsp; 
-        <span class="red">X</span> Code 60/90/999
-      </p>
-      <button id="toggleAll" class="toggle-all">Collapse All Projects</button>
-    
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MU Ticket List</title>
 
-            <div class="project project-container" id="project-bromley-ps-46">
-              <div class="project-header" onclick="toggleProject('project-bromley-ps-46')">
-                <h2>Bromley PS 46</h2>
-                <span class="toggle-icon">></span>
-              </div>
-              <div class="project-content">
-            
+<style>
+   body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9fafb;
+    margin: 0; 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+  }
 
-                <details>
-                  <summary><pre>A536403227-00A     N MILITARY HWY                        <span style="padding:20px">01/20/26</span>   <span class="blue">⧖</span></pre></summary>
-                  <pre class="block">A536403227 0
-Ticket No:  A536403227-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A534502603
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Subdivision:                                           Lot: 6110
-Address:                      Street: N MILITARY HWY
-Cross 1:     NORVIEW AVE
-Cross 2:     INTERNATIONAL BLVD
-Type of Work:   SEWER MAIN - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED FROM THE FRONT OF ROYAL FARMS BUILDING (PARCEL 6103)
-                TO THE WENDYS PARKING LOT (PARCEL 6110) ACROSS MILITARY
-                HIGHWAY, FROM THE ENTRANCE OF WENDYS OFF OF N MILITARY HWY TO
-                NORVIEW AVE.
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
+  h1 {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #222;
+  }
+
+  .project {
+    background: #CCB87A;
+    /*border: 2px solid #0078d7;*/  /* nice blue */
+    border-radius: 12px;
+    padding: 24px 24px;
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 3px 8px 20px rgba(0,0,0,0.5);
+  }
+
+  .project h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    width: auto;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #0078d7;
+    padding-bottom: 6px;
+    text-align: center;
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+  }
+
+  details {
+    background: #f1f5f9;
+    border: solid 1px #555555;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    width: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  summary {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #004080;
+    user-select: none;
+    list-style: none;
+  }
+
+  details[open] summary {
+    background: #dbeafe;
+    color: #003366;
+    border-radius: 8px;
+
+  }
+
+  pre {
+    font-family: 'Arial', 'Courier New', monospace;
+  }
+
+  pre .block {
+    background: #fff;
+    margin: 0;
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 8px 8px;
+    font-family: 'Arial', 'Courier New', monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .status-dot {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 8px;
+  }
+  
+  .green {
+    color: limegreen;
+    font-size: 2rem;
+  }
+
+  .blue {
+    color: blue;
+    font-size: 2rem;
+  }
+
+  .red {
+    color: red;
+    font-size: 2rem;
+  }
+  
+  @keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .status-dot.flash {
+    animation: flash 1s infinite;
+  }
+
+  .flash {
+    animation: flash 1s infinite;
+  }
+
+  img {
+    width: 100%;
+  } 
+
+/* COLLAPSIBLE PROJECTS */
+  .project-container {
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .project-header {
+    background-color: #fff;
+    border-radius: 12px 12px 12px 12px;
+    padding: 16px 24px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 8px 20px rgba(0,0,0,0.5);
+  }
+
+
+  .toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .project-content {
+    /*background: #f1f5f9*/;
+    border: 1px solid transparent;
+    border-top: none;
+    border-radius: 12px 12px 12px 12px;
+    padding: 20px;
+    display: none;
+  }
+
+  .project-container.open .project-content {
+    display: block;
+  }
+
+  .project-container.open .toggle-icon {
+    transform: rotate(90deg);
+  }
+
+  /* Toggle All Button */
+  .toggle-all {
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .toggle-all:hover {
+    background: #005a9e;
+  }
+
+  img {
+    width: 100%;
+    margin-top: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+  <h1>LETS ALT</h1>
+  <button id="toggleAll" class="toggle-all">Collapse All Projects</button>
+<small>Updated Wed Jan  7 02:08:46 PM EST 2026</small>
+<p><strong>Legend:</strong> <span class="green">✔</span> Cleared &nbsp; <span class="blue">⧖</span> Awaiting initial responses; Not clear &nbsp; <span class="red">X</span> Code 60/90/999 present; Not clear</p>
+  <div class="project project-container" id="project-uncategorized">
+    <div class="project-header" onclick="toggleProject('project-uncategorized')">
+      <h2>Uncategorized</h2>
+      <span class="toggle-icon"> > </span>
+    </div>
+    <div class="project-content">
+
+<details><summary><pre>A534900624-00A        NEW  GRID EMER LREQE CONSTANCE RD   <span style='padding: 20;'>Update By       :            Time:</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A534900624-00A                        NEW  GRID EMER LREQ
+Transmit        : 12/15/25   Time: 08:17 AM   Op: VA811
+Call            : 12/15/25   Time: 08:11 AM
+Due By          : 12/15/25   Time: 11:17 AM
+Update By       :            Time:
+Expires         :            Time:
+Old Tkt No: A534900624
+Original Call   : 12/15/25   Time: 08:11 AM   Op: VA811
+Address:                      Street: E CONSTANCE RD
+Cross 1:     N MAIN ST
+Type of Work:   WATER MAIN - REPAIR, REPLACE OR ABANDON
+Work Done For:  CITY OF SUFFOLK UTILITY DEPT
+Excavation area:CREW WILL BE ON SITE AT 12/15/2025 08:45 AM
+                APPROX 340 FT EAST OF THE EASTERN ENTRANCE / EXIT TO 100 E
+                CONSTANCE RD ON THE SOUTH SIDE OF  E CONSTANCE RD , A 50 FT
+                RADIUS OF THE INTERSECTION OF  E CONSTANCE RD AND THE TRAIL
+                SITE TYPE: 1. SINGLE ADDRESS
+
 Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINT59 = NORFOLK-TRAFFIC (NFK)
-CINW39 = NORFOLK-WATER (NFK)            COX649 = COX COMMUNICATIONS (COX)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-MFI890 = METRO FIBER (MFI)              NFK823 = NORFOLK-STORM WATER (NFK)
-SNA332 = SOUTHSIDE NETWORK AUTH-FI(SNA) VNG129 = VIRGINIA NATURAL GAS (VNG)
+CHC192 = CHARTER COMMUNICATIONS (CHC)   COX649 = COX COMMUNICATIONS (COX)
+CSPU60 = SUFFOLK-WATER & SEWER (SFK)    DOM409 = DOMINION-EAST DISTRIBUTIO(DOM)
+HRS092 = HAMPTON ROADS-SEWER (HRS)      PTM041 = PORTSMOUTH-WATER (PTM)
+SNA332 = SOUTHSIDE NETWORK AUTH-FI(SNA) STC556 = SHENTEL-GLOFIBER (STC)
+STE414 = SUFFOLK-TRAFFIC (STE)          VNG129 = VIRGINIA NATURAL GAS (VNG)
 VZN757 = VERIZON (VZN)
-========================================
-A536403227 0
-NORFOLK-SEWER
-CINS39
-NORFOLK-TRAFFIC
-CINT59
-NORFOLK-WATER
-CINW39
+
+Responses:
+HAMPTON ROADS-SEWER
+HRS092
+30: No Conflict; utility is outside of stated work area.
+SUFFOLK-TRAFFIC
+STE414
+30: No Conflict; utility is outside of stated work area.
 COX COMMUNICATIONS
 COX649
-DOMINION-EAST DISTRIBUTION
-DOM409
-METRONET INC-COMM
-MET812
-METRO FIBER
-MFI890
-NORFOLK-STORM WATER
-NFK823
-SOUTHSIDE NETWORK AUTH-FIBER
-SNA332
+30: No Conflict; utility is outside of stated work area.
 VIRGINIA NATURAL GAS
 VNG129
+30: No Conflict; utility is outside of stated work area.
+DOMINION-EAST DISTRIBUTION
+DOM409
+30: No Conflict; utility is outside of stated work area.
 VERIZON
 VZN757
-========================================<br><img src="./maps/TicketMap-A536403227-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
+30: No Conflict; utility is outside of stated work area.
+SHENTEL-GLOFIBER
+STC556
+30: No Conflict; utility is outside of stated work area.
+CHARTER COMMUNICATIONS
+CHC192
+30: No Conflict; utility is outside of stated work area.
+JULIAN, VINCENT ( ITG VA )
+SOUTHSIDE NETWORK AUTH-FIBER
+SNA332
+10: Marked
+SUFFOLK-WATER & SEWER
+CSPU60
+30: No Conflict; utility is outside of stated work area.
+PORTSMOUTH-WATER
+PTM041
+12: Marked up to privately owned utility; contact private utility owner for locate
+========================================<br><img src=./maps/TicketMap-A534900624-0.jpeg></pre></details>
+    </div>
+  </div>
+  <div class="project project-container" id="project-bruces-park-ps-152">
+    <div class="project-header" onclick="toggleProject('project-bruces-park-ps-152')">
+      <h2>Bruces Park PS 152</h2>
+      <span class="toggle-icon"> > </span>
+    </div>
+    <div class="project-content">
 
-                <details>
-                  <summary><pre>A534502603-00A     N MILITARY HWY                        <span style="padding:20px">12/31/25</span>   <span class="green">✔</span></pre></summary>
-                  <pre class="block">A534502603 0
-Ticket No:  A534502603-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A532503080
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
+<details><summary><pre>A535900156-00A        UPDT GRID NORM LREQJAMAICA AVE   <span style='padding: 20;'>01/15/26</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A535900156-00A                        UPDT GRID NORM LREQ
+Transmit        : 12/25/25   Time: 04:34 PM   Op: VA811
+Call            : 12/25/25   Time: 04:34 PM
+Due By          : 12/31/25   Time: 07:00 AM
+Update By       : 01/15/26   Time: 11:59 PM
+Expires         : 01/21/26   Time: 07:00 AM
+Old Tkt No: A534000225
+Original Call   : 12/06/25   Time: 11:58 PM   Op: VA811
+Address:                      Street: JAMAICA AVE
+Cross 1:     LEAD ST
+Type of Work:   WATER AND SEWER - INSTALL
+Work Done For:  CITY OF NORFOLK UTILITIES
+Excavation area:FROM THE INTERSECTION OF LEAD ST AND JAMAICA AVE TO THE DEAD
+                OF JAMAICA AVE EAST OF THE INTERSECTION.  WE NEED THE ENTIRE
+                PAVEMENT AREA AND 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES
+                OF THE STREET.
+                SITE TYPE: 4. INFRASTRUCTURE PROJECT
+
+Members:
+CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
+DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
+NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
+VZN757 = VERIZON (VZN)
+
+Responses:
+VERIZON
+VZN757
+30: No Conflict; utility is outside of stated work area.
+PRAC
+NORFOLK-SEWER
+CINS39
+96: No response required from this terminal
+NORFOLK-WATER
+CINW39
+96: No response required from this terminal
+VIRGINIA NATURAL GAS
+VNG129
+11: Marked; abandoned utility lines may be in area
+DOMINION-EAST DISTRIBUTION
+DOM409
+30: No Conflict; utility is outside of stated work area.
+NORFOLK-STORM WATER
+NFK823
+10: Marked
+METRONET INC-COMM
+MET812
+30: No Conflict; utility is outside of stated work area.
+JOERGEN HAUSCHI
+========================================<br><img src=./maps/TicketMap-A535900156-0.jpeg></pre></details>
+<details><summary><pre>A535900157-00A        UPDT GRID NORM LREQLEAD ST   <span style='padding: 20;'>01/15/26</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A535900157-00A                        UPDT GRID NORM LREQ
+Transmit        : 12/25/25   Time: 04:34 PM   Op: VA811
+Call            : 12/25/25   Time: 04:34 PM
+Due By          : 12/31/25   Time: 07:00 AM
+Update By       : 01/15/26   Time: 11:59 PM
+Expires         : 01/21/26   Time: 07:00 AM
+Old Tkt No: A534100003
+Original Call   : 12/07/25   Time: 12:47 AM   Op: VA811
+Address:                      Street: LEAD ST
+Cross 1:     CARY AVE
+Type of Work:   WATER AND SEWER - INSTALL
+Work Done For:  CITY OF NORFOLK
+Excavation area:FROM INTERSECTION OF CARY AVE AND LEAD ST TO DEAD END OF LEAD
+                ST, ENTIRE PAVEMENT AREA AND 20' OFF THE EDGE OF PAVEMENT
+                SITE TYPE: 4. INFRASTRUCTURE PROJECT
+
+Members:
+CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
+DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
+NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
+VZN757 = VERIZON (VZN)
+
+Responses:
+VERIZON
+VZN757
+30: No Conflict; utility is outside of stated work area.
+PRAC
+NORFOLK-SEWER
+CINS39
+96: No response required from this terminal
+NORFOLK-WATER
+CINW39
+96: No response required from this terminal
+VIRGINIA NATURAL GAS
+VNG129
+11: Marked; abandoned utility lines may be in area
+DOMINION-EAST DISTRIBUTION
+DOM409
+10: Marked
+NORFOLK-STORM WATER
+NFK823
+10: Marked
+METRONET INC-COMM
+MET812
+30: No Conflict; utility is outside of stated work area.
+JOERGEN HAUSCHI
+========================================<br><img src=./maps/TicketMap-A535900157-0.jpeg></pre></details>
+<details><summary><pre>A535900158-00A        UPDT GRID NORM LREQJAMAICA AVE   <span style='padding: 20;'>01/15/26</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A535900158-00A                        UPDT GRID NORM LREQ
+Transmit        : 12/25/25   Time: 04:35 PM   Op: VA811
+Call            : 12/25/25   Time: 04:35 PM
+Due By          : 12/31/25   Time: 07:00 AM
+Update By       : 01/15/26   Time: 11:59 PM
+Expires         : 01/21/26   Time: 07:00 AM
+Old Tkt No: A534100004
+Original Call   : 12/07/25   Time: 12:48 AM   Op: VA811
+Address:                      Street: JAMAICA AVE
+Cross 1:     MARSHALL AVE
+Cross 2:     LEAD ST
+Type of Work:   WATER AND SEWER - INSTALL
+Work Done For:  CITY OF NORFOLK
+Excavation area:WE NEED UTILITIES MARKED ON JAMAICA AVE  FROM THE INTERSECTION
+                OF JAMAICA AVE AND MARSHALL AVE TO THE INTERSECTION OF JAMAICA
+                AVE AND LEAD ST.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS
+                WELL AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE
+                STREET.
+                SITE TYPE: 4. INFRASTRUCTURE PROJECT
+
+Members:
+CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
+DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
+NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
+VZN757 = VERIZON (VZN)
+
+Responses:
+VERIZON
+VZN757
+30: No Conflict; utility is outside of stated work area.
+PRAC
+NORFOLK-SEWER
+CINS39
+96: No response required from this terminal
+NORFOLK-WATER
+CINW39
+96: No response required from this terminal
+VIRGINIA NATURAL GAS
+VNG129
+11: Marked; abandoned utility lines may be in area
+DOMINION-EAST DISTRIBUTION
+DOM409
+30: No Conflict; utility is outside of stated work area.
+NORFOLK-STORM WATER
+NFK823
+10: Marked
+METRONET INC-COMM
+MET812
+30: No Conflict; utility is outside of stated work area.
+JOERGEN HAUSCHI
+========================================<br><img src=./maps/TicketMap-A535900158-0.jpeg></pre></details>
+<details><summary><pre>A536403222-00A        UPDT GRID NORM LREQMARSHALL AVE   <span style='padding: 20;'>01/20/26</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A536403222-00A                        UPDT GRID NORM LREQ
+Transmit        : 12/30/25   Time: 01:17 PM   Op: VA811
+Call            : 12/30/25   Time: 01:17 PM
+Due By          : 01/05/26   Time: 07:00 AM
+Update By       : 01/20/26   Time: 11:59 PM
+Expires         : 01/23/26   Time: 07:00 AM
+Old Tkt No: A534502597
+Original Call   : 12/11/25   Time: 12:10 PM   Op: VA811
+Address:                      Street: MARSHALL AVE
+Cross 1:     CARY AVE
+Cross 2:     JAMAICA AVE
+Type of Work:   WATER AND SEWER - INSTALL
+Work Done For:  CITY OF NORFOLK
+Excavation area:WE NEED UTILITIES MARKED ON MARSHALL AVE  FROM THE
+                INTERSECTION OF CARY AVE AND MARSHALL AVE TO THE DEAD END OF
+                MARSHALL AVE.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS WELL
+                AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE STREET.
+                EWL: YES
+                SITE TYPE: 4. INFRASTRUCTURE PROJECT
+
+Members:
+CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
+COX649 = COX COMMUNICATIONS (COX)       DOM409 = DOMINION-EAST DISTRIBUTIO(DOM)
+MET812 = METRONET INC-COMM (MET)        NFK823 = NORFOLK-STORM WATER (NFK)
+VNG129 = VIRGINIA NATURAL GAS (VNG)     VZN757 = VERIZON (VZN)
+
+Responses:
+VERIZON
+VZN757
+30: No Conflict; utility is outside of stated work area.
+PRAC
+VIRGINIA NATURAL GAS
+VNG129
+11: Marked; abandoned utility lines may be in area
+NORFOLK-STORM WATER
+NFK823
+10: Marked
+NORFOLK-SEWER
+CINS39
+96: No response required from this terminal
+NORFOLK-WATER
+CINW39
+96: No response required from this terminal
+METRONET INC-COMM
+MET812
+30: No Conflict; utility is outside of stated work area.
+JOERGEN HAUSCHI
+DOMINION-EAST DISTRIBUTION
+DOM409
+10: Marked
+COX COMMUNICATIONS
+COX649
+30: No Conflict; utility is outside of stated work area.
+========================================<br><img src=./maps/TicketMap-A536403222-0.jpeg></pre></details>
+<details><summary><pre>A536403225-00A        UPDT GRID NORM LREQCARY AVE   <span style='padding: 20;'>01/20/26</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A536403225-00A                        UPDT GRID NORM LREQ
+Transmit        : 12/30/25   Time: 01:18 PM   Op: VA811
+Call            : 12/30/25   Time: 01:18 PM
+Due By          : 01/05/26   Time: 07:00 AM
+Update By       : 01/20/26   Time: 11:59 PM
+Expires         : 01/23/26   Time: 07:00 AM
+Old Tkt No: A534502601
+Original Call   : 12/11/25   Time: 12:10 PM   Op: VA811
+Address:                      Street: CARY AVE
+Cross 1:     HERBERT COLLINS WAY
+Cross 2:     KENTON AVE
+Type of Work:   WATER AND SEWER - INSTALL
+Work Done For:  CITY OF NORFOLK
+Excavation area:WE NEED CARY AVE MARKED FOR UTILITIES FROM THE CARY AVE AND
+                HERBERT COLLINS WAY INTERSECTION TO THE CARY AVE AND KENTON
+                AVE INTERSECTION.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS
+                WELL AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE
+                STREET
+                SITE TYPE: 4. INFRASTRUCTURE PROJECT
+
+Members:
+CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
+COX649 = COX COMMUNICATIONS (COX)       DOM409 = DOMINION-EAST DISTRIBUTIO(DOM)
+NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
+VZN757 = VERIZON (VZN)
+
+Responses:
+VIRGINIA NATURAL GAS
+VNG129
+11: Marked; abandoned utility lines may be in area
+NORFOLK-STORM WATER
+NFK823
+10: Marked
+NORFOLK-SEWER
+CINS39
+96: No response required from this terminal
+NORFOLK-WATER
+CINW39
+96: No response required from this terminal
+COX COMMUNICATIONS
+COX649
+30: No Conflict; utility is outside of stated work area.
+DOMINION-EAST DISTRIBUTION
+DOM409
+10: Marked
+VERIZON
+VZN757
+10: Marked
+========================================<br><img src=./maps/TicketMap-A536403225-0.jpeg></pre></details>
+    </div>
+  </div>
+  <div class="project project-container" id="project-bromley-ps-46">
+    <div class="project-header" onclick="toggleProject('project-bromley-ps-46')">
+      <h2>Bromley PS 46</h2>
+      <span class="toggle-icon"> > </span>
+    </div>
+    <div class="project-content">
+
+<details><summary><pre>A536403227-00A        UPDT GRID NORM LREQN MILITARY HWY   <span style='padding: 20;'>01/20/26</span>   <span style="float: right" class="green">✔</span></pre></summary><pre class=block>Ticket No:  A536403227-00A                        UPDT GRID NORM LREQ
+Transmit        : 12/30/25   Time: 01:18 PM   Op: VA811
+Call            : 12/30/25   Time: 01:18 PM
+Due By          : 01/05/26   Time: 07:00 AM
+Update By       : 01/20/26   Time: 11:59 PM
+Expires         : 01/23/26   Time: 07:00 AM
+Old Tkt No: A534502603
+Original Call   : 12/11/25   Time: 12:10 PM   Op: VA811
 Subdivision:                                           Lot: 6110
 Address:                      Street: N MILITARY HWY
 Cross 1:     NORVIEW AVE
@@ -245,6 +556,7 @@ Excavation area:WE NEED FROM THE FRONT OF ROYAL FARMS BUILDING (PARCEL 6103)
                 HIGHWAY, FROM THE ENTRANCE OF WENDYS OFF OF N MILITARY HWY TO
                 NORVIEW AVE.
                 SITE TYPE: 4. INFRASTRUCTURE PROJECT
+
 Members:
 CINS39 = NORFOLK-SEWER (NFK)            CINT59 = NORFOLK-TRAFFIC (NFK)
 CINW39 = NORFOLK-WATER (NFK)            COX649 = COX COMMUNICATIONS (COX)
@@ -252,13 +564,13 @@ DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
 MFI890 = METRO FIBER (MFI)              NFK823 = NORFOLK-STORM WATER (NFK)
 SNA332 = SOUTHSIDE NETWORK AUTH-FI(SNA) VNG129 = VIRGINIA NATURAL GAS (VNG)
 VZN757 = VERIZON (VZN)
-========================================
-A534502603 0
-NORFOLK-TRAFFIC
-CINT59
-10: Marked
+
+Responses:
 METRO FIBER
 MFI890
+10: Marked
+NORFOLK-STORM WATER
+NFK823
 10: Marked
 NORFOLK-SEWER
 CINS39
@@ -266,9 +578,9 @@ CINS39
 NORFOLK-WATER
 CINW39
 10: Marked
-VIRGINIA NATURAL GAS
-VNG129
-70: Critical facility marked. Locator or utility operator must contact excavator and must be present during excavation
+NORFOLK-TRAFFIC
+CINT59
+10: Marked
 METRONET INC-COMM
 MET812
 10: Marked
@@ -282,515 +594,66 @@ DOM409
 VERIZON
 VZN757
 10: Marked
-NORFOLK-STORM WATER
-NFK823
-10: Marked
+VIRGINIA NATURAL GAS
+VNG129
+70: Critical facility marked. Locator or utility operator must contact excavator and must be present during excavation
 SOUTHSIDE NETWORK AUTH-FIBER
 SNA332
 10: Marked
-========================================<br><img src="./maps/TicketMap-A534502603-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-</div></div>
-
-            <div class="project project-container" id="project-bruces-park-ps-152">
-              <div class="project-header" onclick="toggleProject('project-bruces-park-ps-152')">
-                <h2>Bruces Park PS 152</h2>
-                <span class="toggle-icon">></span>
-              </div>
-              <div class="project-content">
-            
-
-                <details>
-                  <summary><pre>A536403225-00A     CARY AVE                              <span style="padding:20px">01/20/26</span>   <span class="blue">⧖</span></pre></summary>
-                  <pre class="block">A536403225 0
-Ticket No:  A536403225-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A534502601
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: CARY AVE
-Cross 1:     HERBERT COLLINS WAY
-Cross 2:     KENTON AVE
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED CARY AVE MARKED FOR UTILITIES FROM THE CARY AVE AND
-                HERBERT COLLINS WAY INTERSECTION TO THE CARY AVE AND KENTON
-                AVE INTERSECTION.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS
-                WELL AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE
-                STREET
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-COX649 = COX COMMUNICATIONS (COX)       DOM409 = DOMINION-EAST DISTRIBUTIO(DOM)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A536403225 0
-NORFOLK-SEWER
-CINS39
-NORFOLK-WATER
-CINW39
-COX COMMUNICATIONS
-COX649
-DOMINION-EAST DISTRIBUTION
-DOM409
-NORFOLK-STORM WATER
-NFK823
-VIRGINIA NATURAL GAS
-VNG129
-VERIZON
-VZN757
-========================================<br><img src="./maps/TicketMap-A536403225-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A536403222-00A     MARSHALL AVE                          <span style="padding:20px">01/20/26</span>   <span class="blue">⧖</span></pre></summary>
-                  <pre class="block">A536403222 0
-Ticket No:  A536403222-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A534502597
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: MARSHALL AVE
-Cross 1:     CARY AVE
-Cross 2:     JAMAICA AVE
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED UTILITIES MARKED ON MARSHALL AVE  FROM THE
-                INTERSECTION OF CARY AVE AND MARSHALL AVE TO THE DEAD END OF
-                MARSHALL AVE.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS WELL
-                AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE STREET.
-                EWL: YES
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-COX649 = COX COMMUNICATIONS (COX)       DOM409 = DOMINION-EAST DISTRIBUTIO(DOM)
-MET812 = METRONET INC-COMM (MET)        NFK823 = NORFOLK-STORM WATER (NFK)
-VNG129 = VIRGINIA NATURAL GAS (VNG)     VZN757 = VERIZON (VZN)
-========================================
-A536403222 0
-NORFOLK-SEWER
-CINS39
-NORFOLK-WATER
-CINW39
-COX COMMUNICATIONS
-COX649
-DOMINION-EAST DISTRIBUTION
-DOM409
-METRONET INC-COMM
-MET812
-NORFOLK-STORM WATER
-NFK823
-VIRGINIA NATURAL GAS
-VNG129
-VERIZON
-VZN757
-========================================<br><img src="./maps/TicketMap-A536403222-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A535900158-00A     JAMAICA AVE                           <span style="padding:20px">01/15/26</span>   <span class="blue">⧖</span></pre></summary>
-                  <pre class="block">A535900158 0
-Ticket No:  A535900158-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A534100004
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: JAMAICA AVE
-Cross 1:     MARSHALL AVE
-Cross 2:     LEAD ST
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED UTILITIES MARKED ON JAMAICA AVE  FROM THE INTERSECTION
-                OF JAMAICA AVE AND MARSHALL AVE TO THE INTERSECTION OF JAMAICA
-                AVE AND LEAD ST.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS
-                WELL AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE
-                STREET.
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A535900158 0
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-PRAC
-NORFOLK-SEWER
-CINS39
-96: No response required from this terminal
-NORFOLK-WATER
-CINW39
-96: No response required from this terminal
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-DOMINION-EAST DISTRIBUTION
-DOM409
-30: No Conflict; utility is outside of stated work area.
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-========================================<br><img src="./maps/TicketMap-A535900158-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A535900157-00A     LEAD ST                               <span style="padding:20px">01/15/26</span>   <span class="blue">⧖</span></pre></summary>
-                  <pre class="block">A535900157 0
-Ticket No:  A535900157-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A534100003
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: LEAD ST
-Cross 1:     CARY AVE
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:FROM INTERSECTION OF CARY AVE AND LEAD ST TO DEAD END OF LEAD
-                ST, ENTIRE PAVEMENT AREA AND 20' OFF THE EDGE OF PAVEMENT
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A535900157 0
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-PRAC
-NORFOLK-SEWER
-CINS39
-96: No response required from this terminal
-NORFOLK-WATER
-CINW39
-96: No response required from this terminal
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-DOMINION-EAST DISTRIBUTION
-DOM409
-10: Marked
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-========================================<br><img src="./maps/TicketMap-A535900157-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A535900156-00A     JAMAICA AVE                           <span style="padding:20px">01/15/26</span>   <span class="blue">⧖</span></pre></summary>
-                  <pre class="block">A535900156 0
-Ticket No:  A535900156-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A534000225
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: JAMAICA AVE
-Cross 1:     LEAD ST
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK UTILITIES
-Excavation area:FROM THE INTERSECTION OF LEAD ST AND JAMAICA AVE TO THE DEAD
-                OF JAMAICA AVE EAST OF THE INTERSECTION.  WE NEED THE ENTIRE
-                PAVEMENT AREA AND 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES
-                OF THE STREET.
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A535900156 0
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-PRAC
-NORFOLK-SEWER
-CINS39
-96: No response required from this terminal
-NORFOLK-WATER
-CINW39
-96: No response required from this terminal
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-DOMINION-EAST DISTRIBUTION
-DOM409
-30: No Conflict; utility is outside of stated work area.
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-========================================<br><img src="./maps/TicketMap-A535900156-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A534502601-00A     CARY AVE                              <span style="padding:20px">12/31/25</span>   <span class="green">✔</span></pre></summary>
-                  <pre class="block">A534502601 0
-Ticket No:  A534502601-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A532503075
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: CARY AVE
-Cross 1:     HERBERT COLLINS WAY
-Cross 2:     KENTON AVE
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED CARY AVE MARKED FOR UTILITIES FROM THE CARY AVE AND
-                HERBERT COLLINS WAY INTERSECTION TO THE CARY AVE AND KENTON
-                AVE INTERSECTION.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS
-                WELL AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE
-                STREET
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-COX649 = COX COMMUNICATIONS (COX)       DOM409 = DOMINION-EAST DISTRIBUTIO(DOM)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A534502601 0
-NORFOLK-SEWER
-CINS39
-10: Marked
-NORFOLK-WATER
-CINW39
-10: Marked
-COX COMMUNICATIONS
-COX649
-30: No Conflict; utility is outside of stated work area.
-DOMINION-EAST DISTRIBUTION
-DOM409
-10: Marked
-VERIZON
-VZN757
-10: Marked
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-========================================<br><img src="./maps/TicketMap-A534502601-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A534502597-00A     MARSHALL AVE                          <span style="padding:20px">12/31/25</span>   <span class="green">✔</span></pre></summary>
-                  <pre class="block">A534502597 0
-Ticket No:  A534502597-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A532503068
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: MARSHALL AVE
-Cross 1:     CARY AVE
-Cross 2:     JAMAICA AVE
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED UTILITIES MARKED ON MARSHALL AVE  FROM THE
-                INTERSECTION OF CARY AVE AND MARSHALL AVE TO THE DEAD END OF
-                MARSHALL AVE.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS WELL
-                AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE STREET.
-                EWL: YES
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A534502597 0
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-PRAC
-NORFOLK-SEWER
-CINS39
-10: Marked
-NORFOLK-WATER
-CINW39
-10: Marked
-DOMINION-EAST DISTRIBUTION
-DOM409
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-========================================<br><img src="./maps/TicketMap-A534502597-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A534100004-00A     JAMAICA AVE                           <span style="padding:20px">12/26/25</span>   <span class="green">✔</span></pre></summary>
-                  <pre class="block">A534100004 0
-Ticket No:  A534100004-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A532102002
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: JAMAICA AVE
-Cross 1:     MARSHALL AVE
-Cross 2:     LEAD ST
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:WE NEED UTILITIES MARKED ON JAMAICA AVE  FROM THE INTERSECTION
-                OF JAMAICA AVE AND MARSHALL AVE TO THE INTERSECTION OF JAMAICA
-                AVE AND LEAD ST.  WE NEED THE ENTIRE PAVEMENT AREA MARKED AS
-                WELL AS 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES OF THE
-                STREET.
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A534100004 0
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-PRAC
-NORFOLK-SEWER
-CINS39
-10: Marked
-NORFOLK-WATER
-CINW39
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-DOMINION-EAST DISTRIBUTION
-DOM409
-30: No Conflict; utility is outside of stated work area.
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-========================================<br><img src="./maps/TicketMap-A534100004-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A534100003-00A     LEAD ST                               <span style="padding:20px">12/26/25</span>   <span class="green">✔</span></pre></summary>
-                  <pre class="block">A534100003 0
-Ticket No:  A534100003-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A532101992
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: LEAD ST
-Cross 1:     CARY AVE
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK
-Excavation area:FROM INTERSECTION OF CARY AVE AND LEAD ST TO DEAD END OF LEAD
-                ST, ENTIRE PAVEMENT AREA AND 20' OFF THE EDGE OF PAVEMENT
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A534100003 0
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-PRAC
-NORFOLK-SEWER
-CINS39
-10: Marked
-NORFOLK-WATER
-CINW39
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-DOMINION-EAST DISTRIBUTION
-DOM409
-10: Marked
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-========================================<br><img src="./maps/TicketMap-A534100003-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-
-                <details>
-                  <summary><pre>A534000225-00A     JAMAICA AVE                           <span style="padding:20px">12/26/25</span>   <span class="green">✔</span></pre></summary>
-                  <pre class="block">A534000225 0
-Ticket No:  A534000225-00A                        UPDT GRID NORM LREQ
-Old Tkt No: A532101997
-City/Co:NORFOLK CITY          Place:NORFOLK                             State:VA
-Address:                      Street: JAMAICA AVE
-Cross 1:     LEAD ST
-Type of Work:   WATER AND SEWER - INSTALL
-Work Done For:  CITY OF NORFOLK UTILITIES
-Excavation area:FROM THE INTERSECTION OF LEAD ST AND JAMAICA AVE TO THE DEAD
-                OF JAMAICA AVE EAST OF THE INTERSECTION.  WE NEED THE ENTIRE
-                PAVEMENT AREA AND 20' OFF THE EDGE OF PAVEMENT ON BOTH SIDES
-                OF THE STREET.
-                SITE TYPE: 4. INFRASTRUCTURE PROJECT
-Members:
-CINS39 = NORFOLK-SEWER (NFK)            CINW39 = NORFOLK-WATER (NFK)
-DOM409 = DOMINION-EAST DISTRIBUTIO(DOM) MET812 = METRONET INC-COMM (MET)
-NFK823 = NORFOLK-STORM WATER (NFK)      VNG129 = VIRGINIA NATURAL GAS (VNG)
-VZN757 = VERIZON (VZN)
-========================================
-A534000225 0
-NORFOLK-SEWER
-CINS39
-10: Marked
-NORFOLK-WATER
-CINW39
-10: Marked
-METRONET INC-COMM
-MET812
-30: No Conflict; utility is outside of stated work area.
-NORFOLK-STORM WATER
-NFK823
-10: Marked
-DOMINION-EAST DISTRIBUTION
-DOM409
-30: No Conflict; utility is outside of stated work area.
-VERIZON
-VZN757
-30: No Conflict; utility is outside of stated work area.
-VIRGINIA NATURAL GAS
-VNG129
-11: Marked; abandoned utility lines may be in area
-========================================<br><img src="./maps/TicketMap-A534000225-0.jpeg" loading="lazy" alt="Map"></pre>
-                </details>
-                
-</div></div>
-
+========================================<br><img src=./maps/TicketMap-A536403227-0.jpeg></pre></details>
+    </div>
+  </div>
 <script>
-  function toggleProject(id) { document.getElementById(id).classList.toggle('open'); saveState(); }
+  // Toggle individual project
+  function toggleProject(id) {
+    const container = document.getElementById(id);
+    container.classList.toggle('open');
+    saveState();
+  }
+
+  // Toggle all projects
   document.getElementById('toggleAll').addEventListener('click', function() {
-    const all = document.querySelectorAll('.project-container');
-    const open = [...all].every(c => c.classList.contains('open'));
-    all.forEach(c => c.classList.toggle('open', !open));
-    this.textContent = open ? 'Expand All Projects' : 'Collapse All Projects';
+    const containers = document.querySelectorAll('.project-container');
+    const allOpen = Array.from(containers).every(c => c.classList.contains('open'));
+    containers.forEach(c => {
+      if (allOpen) c.classList.remove('open');
+      else c.classList.add('open');
+    });
+    this.textContent = allOpen ? 'Expand All Projects' : 'Collapse All Projects';
     saveState();
   });
+
+  // Save/restore open state
   function saveState() {
-    const open = [...document.querySelectorAll('.project-container.open')].map(c => c.id);
+    const open = Array.from(document.querySelectorAll('.project-container.open'))
+                      .map(c => c.id);
     localStorage.setItem('openProjects', JSON.stringify(open));
   }
+
+  function loadState() {
+    const saved = localStorage.getItem('openProjects');
+    if (! shielded) return;
+    try {
+      const openIds = JSON.parse(saved);
+      openIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('open');
+      });
+      updateToggleAllButton();
+    } catch(e) {}
+  }
+
+  function updateToggleAllButton() {
+    const open = document.querySelectorAll('.project-container.open').length;
+    const total = document.querySelectorAll('.project-container').length;
+    const btn = document.getElementById('toggleAll');
+    btn.textContent = open === total ? 'Collapse All Projects' : 'Expand All Projects';
+  }
+
+  // Init
   window.addEventListener('load', () => {
-    try { JSON.parse(localStorage.getItem('openProjects')||'[]').forEach(id => {
-      const el = document.getElementById(id); if(el) el.classList.add('open');
-    })} catch(e){}
+    loadState();
+    updateToggleAllButton();
   });
 </script>
 </body></html>
