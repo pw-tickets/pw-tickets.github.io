@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Project Report</title>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --gray-100: #f9fafb;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --green-600: #16a34a;
+            --red-600: #dc2626;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+
+        html {
+            height: auto;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: visible !important;
+            background: var(--gray-100);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto 6rem auto;
+            padding: 0 1.5rem 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .header h1 {
+            margin: 0;
+            color: var(--primary-dark);
+            font-size: 2.25rem;
+        }
+
+        .toggle-header {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 2.5rem;
+        }
+
+        .toggle-header::after {
+            content: "▼";
+            position: absolute;
+            right: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .toggle-header.collapsed::after {
+            transform: rotate(-90deg);
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .subsection-title {
+            color: #334155;
+            font-size: 1.5rem;
+            margin: 1.8rem 0 0.8rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .toggle-content {
+            transition: max-height 0.35s ease-out;
+            overflow: hidden;
+            will-change: max-height;
+        }
+
+        .toggle-content[style*="max-height:"][style*="px"]:not([style*="0px"]) {
+            overflow: visible !important;
+            height: auto !important;
+        }
+
+        .toggle-content.expanded {
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin: 1rem 0 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .data-table th {
+            background: var(--gray-100);
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-600);
+            width: 35%;
+        }
+
+        .subcontractors-table thead {
+            background: var(--primary);
+            color: white;
+        }
+
+        .subcontractors-table th,
+        .subcontractors-table td {
+            padding: 14px 16px;
+        }
+
+        .subcontractors-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .status-yes { color: var(--green-600); font-weight: 600; }
+        .status-yes::before { content: "✔ "; font-size: 1.2em; }
+        .status-no  { color: var(--red-600);   font-weight: 600; }
+        .status-no::before  { content: "✘ "; font-size: 1.2em; }
+
+        .footer {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 12px; }
+            .section-title { font-size: 1.75rem; }
+            .subsection-title { font-size: 1.35rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Project Status Report</h1>
+        <h4 style="color: var(--gray-600); margin-top: 0.5rem;">Bromley Pump Station 46 Phase 1</h4>
+    </div>
+
+<h1 class="toggle-header section-title" data-toggle="parent">Project Overview</h1>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Project Name</th><td>Bromley Pump Station 46 Phase 1</td></tr>
+<tr><th>Project Owner</th><td>City of Norfolk</td></tr>
+<tr><th>Project Location</th><td>Norview Ave and N Military Hwy</td></tr>
+</table>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Project Manager</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Project Owner Rep</th><td>Megan White</td></tr>
+<tr><th>Project Owner Rep Phone</th><td>757.364.5075</td></tr>
+<tr><th>Project Owner Rep Email</th><td>Megan.White@norfolk.gov</td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Project Quality Inspector</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Project Owner Qc</th><td>Burt Cox</td></tr>
+<tr><th>Project Owner Qc Phone</th><td>757.617.2467</td></tr>
+<tr><th>Project Owner Qc Email</th><td>Burt.Cox@norfolk.gov</td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Project Engineeer</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Project Eng</th><td>CDM Smith</td></tr>
+<tr><th>Project Eng Rep</th><td>Todd Smith</td></tr>
+<tr><th>Project Eng Phone</th><td>757.509.1591</td></tr>
+<tr><th>Project Eng Email</th><td>smithtr@cdmsmith.com</td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Environmental</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Ens Rep</th><td>Timothy Reed</td></tr>
+<tr><th>Ens Phone</th><td>757.439.5331</td></tr>
+<tr><th>Ens Email</th><td>Timothy.ReedIII@norfolk.gov</td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">ROW Inspector</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Row Inspector</th><td>Kendell Jones</td></tr>
+<tr><th>Row Inspector Phone</th><td>757.605.8996</td></tr>
+</table>
+</div>
+</div>
+</div>
+<h1 class="toggle-header section-title" data-toggle="parent">Project Status</h1>
+<div class="toggle-content">
+<h2 class="toggle-header subsection-title" data-toggle="self">Tax Exemption</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Tax Exempt Elig</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Tax Exempt Filed</th><td><span class="status-yes"></span></td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Project Sign</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Project Sign Needed</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Project Sign Installed</th><td><span class="status-yes"></span></td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Laydown</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Laydown Yard Acquired</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Laydown Parcel</th><td>1444 Norview Ave, Norfolk, VA</td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">ROW Permit</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Row Permit Required</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Row Permit Acquired</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Ttc Approved</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Mut Submitted</th><td><span class="status-yes"></span></td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">LD Permit</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Ld Permit Acquired</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Building Permit Required</th><td><span class="status-no"></span></td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Quotes/Subcontracts</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Quotes Signed</th><td><span class="status-yes"></span></td></tr>
+<tr><th>Signed Quotes Sent</th><td><span class="status-yes"></span></td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">GIS</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="data-table">
+<tr><th>Gis Needed</th><td><span class="status-yes"></span></td></tr>
+</table>
+</div>
+</div>
+<h2 class="toggle-header subsection-title" data-toggle="self">Subcontractors</h2>
+<div class="toggle-content">
+<div class="table-container">
+<table class="subcontractors-table">
+<thead>
+<tr><th>Type</th><th>Company</th><th>Representative</th><th>Address</th><th>Phone</th><th>Email</th></tr>
+</thead>
+<tbody>
+<tr><td>Sheeting</td><td>Ford Pile Foundations, Inc.</td><td>Trey Ford</td><td>4985 Euclid Rd. Virginia Beach, VA 23462</td><td>757.497.3593</td><td>piledrvr@yahoo.com</td></tr>
+<tr><td>Tunneling</td><td>Bradshaw Construction</td><td>Jordan Bradshaw</td><td>175 W. Liberty Road, Eldersburg, MD 21784</td><td>410.746.3458</td><td>jordan.bradshaw@bradshawcc.com</td></tr>
+<tr><td>Asphalt</td><td>VA Paving</td><td>Lonnie Minson</td><td>3431 Trant Ave, Norfolk, VA 23502</td><td>757.675.8714</td><td>lonnie.minson@eurovia.us</td></tr>
+<tr><td>Concrete</td><td>Labroc Concrete Inc</td><td>Chad Elliot</td><td>1720 Lambert Ct, Chesapeake, VA 23320</td><td>757.937.8420</td><td>labrocinc@yahoo.com</td></tr>
+<tr><td>Surveying</td><td>Fallon Land Surveying</td><td>Tim Fallon</td><td>15147 Carrollton Blvd. Suite G, Carrollton VA 23314 </td><td>757.615.6920</td><td>tfallon@tfsurveying.com</td></tr>
+<tr><td>Geo Pe</td><td>ECS</td><td>Justin Hogg</td><td>804 Professional Place West, Chesapeake, VA 23320</td><td>757.510.0790</td><td>JHogg@ecslimited.com</td></tr>
+<tr><td>Cctv Insp</td><td>Atlantic Heat and Cooling</td><td>Tavis Meredith</td><td>553 Central Drive, Virginia Beach, VA 23454</td><td>757.592.8217</td><td>Tavis@atlanticheatcool.com</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table class="data-table">
+<tr><th>Sheeting</th><td>Ford Pile Foundations, Inc.</td></tr>
+<tr><th>Sheeting Rep</th><td>Trey Ford</td></tr>
+<tr><th>Sheeting Add</th><td>4985 Euclid Rd. Virginia Beach, VA 23462</td></tr>
+<tr><th>Sheeting Phone</th><td>757.497.3593</td></tr>
+<tr><th>Sheeting Email</th><td>piledrvr@yahoo.com</td></tr>
+<tr><th>Tunneling</th><td>Bradshaw Construction</td></tr>
+<tr><th>Tunneling Rep</th><td>Jordan Bradshaw</td></tr>
+<tr><th>Tunneling Add</th><td>175 W. Liberty Road, Eldersburg, MD 21784</td></tr>
+<tr><th>Tunneling Phone</th><td>410.746.3458</td></tr>
+<tr><th>Tunneling Email</th><td>jordan.bradshaw@bradshawcc.com</td></tr>
+<tr><th>Asphalt</th><td>VA Paving</td></tr>
+<tr><th>Asphalt Rep</th><td>Lonnie Minson</td></tr>
+<tr><th>Asphalt Add</th><td>3431 Trant Ave, Norfolk, VA 23502</td></tr>
+<tr><th>Aspahlt Phone</th><td>757.675.8714</td></tr>
+<tr><th>Asphalt Email</th><td>lonnie.minson@eurovia.us</td></tr>
+<tr><th>Concrete</th><td>Labroc Concrete Inc</td></tr>
+<tr><th>Concrete Rep</th><td>Chad Elliot</td></tr>
+<tr><th>Concrete Add</th><td>1720 Lambert Ct, Chesapeake, VA 23320</td></tr>
+<tr><th>Concrete Phone</th><td>757.937.8420</td></tr>
+<tr><th>Concrete Email</th><td>labrocinc@yahoo.com</td></tr>
+<tr><th>Surveying</th><td>Fallon Land Surveying</td></tr>
+<tr><th>Surveying Rep</th><td>Tim Fallon</td></tr>
+<tr><th>Surveying Add</th><td>15147 Carrollton Blvd. Suite G, Carrollton VA 23314 </td></tr>
+<tr><th>Surveying Phone</th><td>757.615.6920</td></tr>
+<tr><th>Surveying Emai</th><td>tfallon@tfsurveying.com</td></tr>
+<tr><th>Geo Pe</th><td>ECS</td></tr>
+<tr><th>Geo Pe Rep</th><td>Justin Hogg</td></tr>
+<tr><th>Geo Pe Add</th><td>804 Professional Place West, Chesapeake, VA 23320</td></tr>
+<tr><th>Geo Pe Phone</th><td>757.510.0790</td></tr>
+<tr><th>Geo Pe Email</th><td>JHogg@ecslimited.com</td></tr>
+<tr><th>Cctv Insp</th><td>Atlantic Heat and Cooling</td></tr>
+<tr><th>Cctv Insp Rep</th><td>Tavis Meredith</td></tr>
+<tr><th>Cctv Insp Add</th><td>553 Central Drive, Virginia Beach, VA 23454</td></tr>
+<tr><th>Cctv Insp Phone</th><td>757.592.8217</td></tr>
+<tr><th>Cctv Insp Email</th><td>Tavis@atlanticheatcool.com</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+    <div class="footer">
+        Generated on January 21, 2026 | City of Norfolk Project Documentation
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.toggle-header').forEach(header => {
+        header.classList.add('collapsed');
+
+        const content = header.nextElementSibling;
+        content.style.maxHeight = '0px';
+
+        header.addEventListener('click', () => {
+            const isCollapsed = header.classList.toggle('collapsed');
+
+            content.style.maxHeight = isCollapsed 
+                ? '0px' 
+                : 1400 + 'px';
+
+            if (header.dataset.toggle === 'parent') {
+                const childContents = content.querySelectorAll('.toggle-content');
+                childContents.forEach(childContent => {
+                    childContent.style.maxHeight = isCollapsed 
+                        ? '0px' 
+                        : childContent.scrollHeight + 'px';
+                    
+                    const childHeader = childContent.previousElementSibling;
+                    if (childHeader && childHeader.classList.contains('toggle-header')) {
+                        childHeader.classList.toggle('collapsed', isCollapsed);
+                    }
+                });
+            }
+        });
+    });
+});
+</script></body>
+</html>
