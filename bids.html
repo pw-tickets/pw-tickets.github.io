@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="refresh" content="3600"> <!-- 3600 seconds = 1 hour -->
+  <title>Upcoming Bid Opportunities – Virginia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0f7fa;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 10px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
+    }
+
+    .last-updated {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-top: 8px;
+    }
+
+    .ticker-wrapper {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+      padding-top: 140px; /* space for header */
+      box-sizing: border-box;
+    }
+
+    .ticker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: scroll-up 80s linear infinite;
+      will-change: transform;
+    }
+
+    .project {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 780px;
+      margin: 18px 0;
+      padding: 22px 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      transition: all 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-6px) scale(1.015);
+      background: rgba(255,255,255,0.13);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    }
+
+    .project-name {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: #80deea;
+      margin-bottom: 10px;
+    }
+
+    .project-detail {
+      font-size: 1.1rem;
+      margin: 6px 0;
+      opacity: 0.92;
+    }
+
+    .bid-date {
+      color: #ffeb3b;
+      font-weight: 600;
+    }
+
+    a {
+      color: #4fc3f7;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #81d4fa;
+      text-decoration: underline;
+    }
+
+    @keyframes scroll-up {
+      0% {
+        transform: translateY(100%);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.9rem; }
+      .project { padding: 18px 20px; }
+      .project-name { font-size: 1.3rem; }
+      .project-detail { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Upcoming Bid Opportunities – Virginia</h1>
+  <div class="last-updated">Last updated: <span id="update-time"></span></div>
+</header>
+
+<div class="ticker-wrapper">
+  <div class="ticker">
+    <div class="project">
+      <div class="project-name">Diver Services for Norfolk Water Treatment Plants</div>
+      <div class="project-detail">📍 Norfolk, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">01/28/2026 02:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-002C" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Joseph W Luter Jr Sports Complex - Parks Maintenance Building</div>
+      <div class="project-detail">📍 Smithfield, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">01/29/2026 02:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2025-6BB9" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Section W Force Main Replacement</div>
+      <div class="project-detail">📍 Norfolk, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">01/29/2026 02:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2025-6C2B" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">RFP - Pool Maintenance SuffolkVA</div>
+      <div class="project-detail">📍 Suffolk, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/03/2026 03:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-0191" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">RFQ - Stormwater Ditch Clearing at Route 13 and Pitts Creek</div>
+      <div class="project-detail">📍 Church, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/06/2026 05:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-0716" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">RFQ - Stormwater Ditch Clearing at Route 13 and Gum Branch</div>
+      <div class="project-detail">📍 Mappsville, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/11/2026 05:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-0551" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Tidewater Drive 20 Inch Water Main Replacement</div>
+      <div class="project-detail">📍 Norfolk, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/12/2026 03:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-02C5" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Portsmouth Public Schools - Athletic Fields Maintenance and Related Services</div>
+      <div class="project-detail">📍 Portsmouth, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/18/2026 02:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-0642" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Burson Drive Sewer Extension</div>
+      <div class="project-detail">📍 Chesapeake, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/20/2026 12:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-035F" target="_blank">View Project →</a></div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Pump Station 019 Replacement</div>
+      <div class="project-detail">📍 Newport News, VA</div>
+      <div class="project-detail">Bid Date: <span class="bid-date">02/20/2026 02:00pm EST</span></div>
+      <div class="project-detail"><a href="https://bceva.virtualplanroom.net/Project/Detail/2026-0666" target="_blank">View Project →</a></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Show real generation time (client-side)
+  document.getElementById("update-time").textContent = new Date().toLocaleString();
+</script>
+
+</body>
+</html>
