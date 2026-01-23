@@ -206,6 +206,23 @@
   // Show real generation time (client-side)
   document.getElementById("update-time").textContent = new Date().toLocaleString();
 </script>
+<script>
+  const ticker = document.querySelector('.ticker');
+  const wrapper = document.querySelector('.ticker-wrapper');
+  
+  function updateDuration() {
+    const contentHeight = ticker.scrollHeight;
+    const viewportHeight = wrapper.clientHeight;
+    // Aim for ~8–15 seconds per full screen of content
+    const secondsPerScreen = 12;
+    const screens = Math.ceil(contentHeight / viewportHeight);
+    const duration = screens * secondsPerScreen;
+    
+    ticker.style.animationDuration = `${duration}s`;
+  }
 
+  window.addEventListener('load', updateDuration);
+  window.addEventListener('resize', updateDuration);
+</script>
 </body>
 </html>
